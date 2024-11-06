@@ -1,38 +1,231 @@
-.App {
-  text-align: center;
+.App-logo {
+  height: 50vmin;
+  pointer-events: none;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.4));
+}
+.App-desmob{
+  height: 44vmin;
+  animation: App-logo-spin infinite 10s linear;
 }
 
-.App-logo {
-  height: 40vmin;
+.iconologo{
+  height: 50vmin;
   pointer-events: none;
 }
-
-@media (prefers-reduced-motion: no-preference) {
+.manos{
+  height: 34vmin;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.4));
+}
+/* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+*/
+nav {
+  font-family: sans-serif;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  height: 85px;
+  padding: 10px 3%;
 }
-
+nav p{
+  font-size: 40px;
+  color: #fff;
+  font-weight: bold;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+span{
+  font-size: 40px;
+  color: #fff;
+  font-weight: 100;
+}
+.App-header ul li{
+  list-style: none;
+  display: inline-block;
+}
+.App-header ul li a{
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 21px;
+}
 .App-link {
   color: #61dafb;
 }
+.Contboton{
+  padding: 10px 3%;
+}
+
+.team-section {
+  padding: 50px 20px;
+  background-color: #f0f0f0;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  color: #191650;
+  margin-bottom: 40px;
+}
+
+.team-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.team-card {
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.team-card:hover {
+  transform: translateY(-10px);
+}
+
+.card-image-container {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.member-name {
+  font-size: 1.5rem;
+  color: #191650;
+  margin: 10px 0;
+}
+
+.member-role {
+  font-size: 1rem;
+  color: #272689;
+}
+
+/* Estilos para los iconos de redes sociales debajo del rol */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.social-icons a {
+  display: inline-block;
+}
+
+.social-icon {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s ease;
+}
+
+.team-card:hover .social-icons {
+  opacity: 1;
+}
+
+.team-card:hover .social-icon {
+  transform: scale(1.2);
+}
+
+/* Container de los avisos */
+.Containeravisos {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; 
+  gap: 20px; 
+  margin: 0 auto;
+}
+
+/* Estilo de cada aviso */
+.itemaviso {
+  flex: 1 1 200px;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* Título de cada aviso */
+.itemaviso h1 {
+  font-size: clamp(1.3rem, 1.3vw, 2rem);
+  margin-bottom: 10px;
+  color: #191650;
+  text-align: left;
+}
+
+/* Texto de los avisos */
+.itemaviso p {
+  font-size: 1rem;
+  color: #272689;
+  line-height: 1.5;
+  text-align: left;
+  font-size: clamp(1rem, 1vw, 1.4rem)
+}
+
+/* Estilo para el SVG */
+.itemaviso img {
+  width: 101px; 
+  height: 101px; 
+  margin-bottom: 10px;
+  object-fit: contain; 
+}
+
+/* Para pantallas más grandes, mantener el diseño en fila */
+@media (min-width: 1024px) {
+  .Containeravisos {
+    justify-content: space-around;
+  }
+}
+
+/* Para pantallas pequeñas (tablets y móviles) */
+@media (max-width: 768px) {
+  .Containeravisos {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .itemaviso {
+    flex: none; 
+    width: 90%; 
+    margin-bottom: 20px;
+  }
+}
+
+
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  0% {
+    transform: rotate(0deg); /* Posición inicial */
   }
-  to {
-    transform: rotate(360deg);
+  25% {
+    transform: rotate(5deg); /* Gira 10 grados a la derecha */
+  }
+  50% {
+    transform: rotate(0deg); /* Regresa a la posición original */
+  }
+  75% {
+    transform: rotate(-5deg); /* Gira 10 grados a la izquierda */
+  }
+  100% {
+    transform: rotate(0deg); /* Regresa a la posición original */
   }
 }

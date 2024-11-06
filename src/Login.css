@@ -1,0 +1,143 @@
+/* Asegúrate de que el body cubra toda la pantalla */
+.bodylogin {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; /* Se ajusta automáticamente si el contenido es menor que la pantalla */
+  display: flex;
+  flex-direction: column; /* Hace que el footer se quede al final */
+  justify-content: space-between; /* Evita que el footer suba si hay poco contenido */
+  background: linear-gradient(to right, #5C7CF2 51%, #C2D0FF 50%);
+}
+
+/* El contenedor del login debe centrarse y adaptarse */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-grow: 1; /* Hace que el contenedor crezca para ocupar el espacio disponible */
+  padding: 20px;
+}
+
+.login-form {
+  display: flex;
+  background-color: #DDE6FF;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 95%;
+  max-width: 1000px;
+  height: 80vh;
+  max-height: 600px;
+}
+
+.login-header {
+  flex: 1;
+  background-image: url('./img/fondo.png');
+  background-size: cover; 
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-header h1 {
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+}
+
+.login-header p {
+  font-size: 1.3rem;
+}
+
+.login-content {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-content h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #191650;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 1rem;
+  color: #191650;
+  margin-bottom: 5px;
+  font-weight: bolder;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  font-weight: bolder;
+  color: #272689;
+}
+
+.remember-me input {
+  margin-right: 5px;
+}
+
+.forgot-password {
+  color: #272689;
+  text-decoration: none;
+  font-weight: bolder;
+}
+
+.containerboton {
+  margin-bottom: 20px;
+}
+
+.create-account {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #191650;
+  font-weight: bolder;
+}
+
+.create-account a {
+  color: #272689;
+  text-decoration: none;
+  font-weight: bolder;
+  margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+  .login-form {
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .login-header,
+  .login-content {
+    width: 100%;
+  }
+}
