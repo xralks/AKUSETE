@@ -1,29 +1,34 @@
 import React, { useState } from 'react';
 import Boton from '../componentes/Boton';
 import '../Login.css';
+import '../Registro.css';
 import Menu from '../componentes/Menu';
-import { useNavigate } from 'react-router-dom';  // Importar useNavigate
 
-const Login = () => {
+const Registro = () => {
   // Estado para los campos del formulario
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [remember, setRemember] = useState(false);
-
-  const navigate = useNavigate();  // Hook para navegación
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   // Función para manejar el envío del formulario
   const handleSubmit = async (event) => {
     event.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
 
+    // Validación básica del formulario
+    if (password !== confirmPassword) {
+      alert('Las contraseñas no coinciden');
+      return;
+    }
+
     const userData = {
+      name,
       email,
       password,
-      remember,
     };
 
     try {
-      const response = await fetch('http://localhost:8080/api/login', {
+      const response = await fetch('http://localhost:8080/api/registro', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -33,8 +38,7 @@ const Login = () => {
 
       const data = await response.json();
       if (response.ok) {
-        // Redirigir al usuario a la página /home después de un inicio de sesión exitoso
-        navigate('/home'); // Cambiar a la ruta deseada
+        alert('¡Registro exitoso!');
       } else {
         alert(data.message || 'Ocurrió un error');
       }
@@ -44,19 +48,29 @@ const Login = () => {
   };
 
   return (
-    <section className='bodylogin'>
+    <section className="bodyregistro">
       <header className="App-header">
         <Menu />
       </header>
-      <div className="login-container">
-        <div className="login-form">
-          <div className="login-header">
-            <h1>Accede o crea tu cuenta</h1>
-            <p>Únete a nuestra comunidad.</p>
+      <div className="registro-container">
+        <div className="registro-form-container">
+          <div className="registro-header">
+            <h1>Crea tu cuenta</h1>
+            <p>Estaremos encantados de que te unas a nosotros. Completa el formulario para registrarte y empezar a disfrutar de todos los beneficios.</p>
           </div>
-          <div className="login-content">
-            <h2>Hola! Bienvenido</h2>
+          <div className="registro-content">
+            <h2>¡Hola! Bienvenido</h2>
             <form onSubmit={handleSubmit}>
+              <div className="input-group">
+                <label htmlFor="name">Nombre completo</label>
+                <input
+                  type="text"
+                  id="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Ingresa tu nombre completo"
+                />
+              </div>
               <div className="input-group">
                 <label htmlFor="email">Email</label>
                 <input
@@ -77,24 +91,20 @@ const Login = () => {
                   placeholder="Ingresa tu contraseña"
                 />
               </div>
-              <div className="options">
-                <div className="remember-me">
-                  <input
-                    type="checkbox"
-                    id="remember"
-                    checked={remember}
-                    onChange={(e) => setRemember(e.target.checked)}
-                  />
-                  <label htmlFor="remember">Recordarme</label>
-                </div>
+              <div className="input-group">
+                <label htmlFor="confirmPassword">Confirmar Contraseña</label>
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  placeholder="Confirma tu contraseña"
+                />
               </div>
               <div className="containerboton">
-                <Boton texto="Iniciar Sesión" tipo="azul" espacio="100%" borde="10px" className="boton" />
+                <Boton texto="Registrarme" tipo="azul" espacio="100%" borde="10px" />
               </div>
             </form>
-            <p className="create-account">
-              ¿Aún no tienes una cuenta? <a href="/Registrarse">Crea una cuenta</a>
-            </p>
           </div>
         </div>
       </div>
@@ -102,4 +112,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Registro;

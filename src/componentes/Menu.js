@@ -6,7 +6,7 @@ const Menu = () => {
   const navigate = useNavigate();
 
   const irsesion = () => {
-    navigate('/iniciar sesion');
+    navigate('/iniciar_sesion');
   };
 
   return (
