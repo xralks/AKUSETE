@@ -13,15 +13,6 @@ h2 {
     font-weight: bold;
 }
 
-/* Encabezado */
-.App-header {
-    width: 100%;
-    padding: 20px;
-    background-color: #334DFF;
-    color: white;
-    text-align: right; /* Alineación de botón de inicio/registro a la derecha */
-}
-
 /* Contenedor principal */
 .soporte-container {
     display: flex;
