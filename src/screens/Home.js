@@ -16,6 +16,9 @@ const Home = () => {
   const irAInfo = () => {
     navigate('/info'); 
   };
+  const CrearTicket = () => {
+    navigate('/Crear Ticket'); 
+  };
 
   return (
     <div className="App">
@@ -35,7 +38,7 @@ const Home = () => {
               Estarás ayudando a mejorar el ambiente estudiantil y entregando seguridad.
             </p>
             <div style={styles.containerBotones}>
-              <Boton texto="Crear Ticket" tipo="azul" />
+              <Boton texto="Crear Ticket" tipo="azul" onClick={CrearTicket}/>
               <Boton texto="Leer Más" tipo="blancoAzul" onClick={irAInfo} />
             </div>
           </div>
