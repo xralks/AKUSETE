@@ -14,8 +14,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  flex-grow: 1; /* Hace que el contenedor crezca para ocupar el espacio disponible */
+  max-width: 100%;
+  flex-grow: 1;
   padding: 20px;
 }
 
@@ -133,11 +133,51 @@
 @media (max-width: 768px) {
   .login-form {
     flex-direction: column;
-    height: auto;
+    min-height: 100vh; /* Asegura que el formulario ocupe al menos toda la pantalla en dispositivos pequeños */
+    height: auto; /* Deja que la altura se ajuste según el contenido */
   }
   
   .login-header,
   .login-content {
     width: 100%;
+    padding: 20px; /* Ajustar el padding en pantallas pequeñas */
+  }
+
+  /* Limitar el ancho de los títulos, párrafos y campos de entrada en dispositivos móviles */
+  .login-header h1, .login-header p, .login-content h2 {
+    max-width: 80%; /* Limita el ancho de los títulos y párrafos */
+    margin-left: auto;
+    margin-right: auto;
+    margin: 10px;
+  }
+
+  .input-group input {
+    max-width: 70%; /* Limita el ancho del input */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .containerboton {
+    max-width: 90%; /* Limita el ancho del botón */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .login-header {
+    min-height: 300px; /* Aumenta la altura mínima para el header en pantallas pequeñas */
+  }
+  
+  .login-content {
+    min-height: 350px; /* Aumenta la altura mínima para el contenido en pantallas pequeñas */
+  }
+  .create-account {
+    display: flex;
+    flex-direction: column;
+    height: auto; /* Deja que la altura se ajuste según el contenido */
+  }
+  .boton{
+    width: 30%; /* Cambia el ancho del botón al 80% en pantallas móviles */
+    font-size: 0.9rem; /* Reduce el tamaño de la fuente en móviles */
+    padding: 10px 15px; /* Ajusta el padding en móviles para que se vea más compacto */
   }
 }
