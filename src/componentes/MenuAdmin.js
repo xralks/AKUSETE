@@ -24,15 +24,6 @@ function MenuAdmin() {
             <Link to="/UserAdmin">Tickets activos</Link>
           </li>
           <li className="menu-admin-item">
-            <Link to="/tickets-solucionados">Tickets solucionados</Link>
-          </li>
-          <li className="menu-admin-item">
-            <Link to="/salas">Salas</Link>
-          </li>
-          <li className="menu-admin-item">
-            <Link to="/reviews">Reviews</Link>
-          </li>
-          <li className="menu-admin-item">
             <Link to="/AdminCategorias">Categorías</Link>
           </li>
           <li className="menu-admin-item">
