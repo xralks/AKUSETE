@@ -7,6 +7,9 @@ import Iniciosesion from  './screens/Iniciosesion';
 import CrearTicket from  './screens/CrearTicket';
 import TicketInfo from './screens/TicketInfo';
 import Registrarse from './screens/Registrarse';
+import UserAdmin from './screens/UserAdmin';  // Importamos el componente UserAdmin
+import AdminAvisos from './screens/AdminAvisos';  // Importamos el componente UserAdmin
+import AdminCategorias from './screens/AdminCategorias';  // Importamos el componente UserAdmin
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
         <Route path="/Crear ticket" element={<CrearTicket/>} />
         <Route path="/ticket/:id" element={<TicketInfo />} />
         <Route path="/Registrarse" element={<Registrarse />} />
+        <Route path="/UserAdmin" element={<UserAdmin />} /> 
+        <Route path="/AdminAvisos" element={<AdminAvisos />} />
+        <Route path="/AdminCategorias" element={<AdminCategorias />} />
       </Routes>
     </Router>
   );

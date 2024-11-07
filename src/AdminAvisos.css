@@ -1,0 +1,70 @@
+.admin-avisos {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #EDF2FF;
+  }
+
+  .admin-avisos h2 {
+    color: #272689;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .avisos-table {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .avisos-header,
+  .aviso-row {
+    display: grid;
+    grid-template-columns: 2fr 3fr 1fr;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .avisos-header {
+    background-color: #F7F9FF;
+    font-weight: bold;
+    color: #272689;
+  }
+
+  .titulo {
+    font-weight: bold;
+    color: #191650;
+  }
+
+  .descripcion {
+    color: #666;
+    font-size: 0.9rem;
+  }
+
+  .tipo {
+    font-weight: bold;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+  }
+
+  .tipo.urgente {
+    background-color: #E87D7D;
+    color: white;
+  }
+
+  .tipo.menores {
+    background-color: #4A4ED4;
+    color: white;
+  }
+
+  .tipo.importantes {
+    background-color: #D4C34A;
+    color: white;
+  }
+
+  .aviso-row:last-child {
+    border-bottom: none;
+  }

@@ -1,0 +1,74 @@
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #d4e0ff, #eaf3ff);
+  padding: 20px;
+}
+
+
+.categorias {
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+
+.categorias h2 {
+  color: #2a2a72;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+
+.categoria-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+
+.categoria-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f0f4ff;
+  border-radius: 10px;
+  padding: 15px 20px;
+  transition: background 0.3s, transform 0.3s;
+  font-size: 18px;
+  font-weight: 500;
+  color: #3a3a8e;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+
+.categoria-item:hover {
+  background: #e3e9ff;
+  transform: scale(1.02);
+}
+
+
+.categoria-nombre {
+  font-weight: 600;
+  font-size: 1.2vw;
+  color: #2a2a72;
+}
+
+.categoria-cantidad {
+  background-color: #d0e2ff;
+  border-radius: 8px;
+  padding: 5px 15px;
+  font-size: 16px;
+  color: #2a2a72;
+  font-weight: bold;
+  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
