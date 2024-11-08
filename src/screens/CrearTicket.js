@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Importar useNavigate
 import '../SoporteTecnicoForm.css';
 import Menu from '../componentes/Menu';
 
@@ -8,16 +9,17 @@ function SoporteTecnicoForm() {
   const [descripcion, setDescripcion] = useState('');
   const [sala, setSala] = useState('');
   const [imagenes, setImagenes] = useState(null);
-  const [salas, setSalas] = useState([]); // Estado para almacenar las salas
+  const [salas, setSalas] = useState([]);
+  const navigate = useNavigate(); // Crear instancia de useNavigate
 
-  // Obtener salas desde el API al cargar el componente
   useEffect(() => {
     const fetchSalas = async () => {
       try {
         const response = await fetch('http://localhost:8080/api/salas');
+        
         if (response.ok) {
           const data = await response.json();
-          setSalas(data); // Guardar las salas en el estado
+          setSalas(data);
         } else {
           console.error('Error al obtener las salas');
         }
@@ -25,30 +27,31 @@ function SoporteTecnicoForm() {
         console.error('Error en la solicitud de salas:', error);
       }
     };
-
     fetchSalas();
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append('titulo', titulo);
-    formData.append('tipoProblema', tipoProblema);
-    formData.append('descripcion', descripcion);
-    formData.append('sala', sala);
-    if (imagenes) {
-      formData.append('imagenes', imagenes);
-    }
+    const ticketData = {
+      estadoTicket: titulo,
+      descripcionTicket: descripcion,
+      salaId: sala,
+      tipoProblemaId: tipoProblema,
+    };
 
     try {
-      const response = await fetch('http://localhost:8080/api/tickets', {
+      const response = await fetch('http://localhost:8080/api/tickets/create', {
         method: 'POST',
-        body: formData,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(ticketData),
       });
 
       if (response.ok) {
         alert('Ticket enviado con éxito');
+        navigate('/UserAdmin'); // Redirigir a UserAdmin después de enviar el ticket
       } else {
         alert('Error al enviar el ticket');
       }
@@ -101,10 +104,10 @@ function SoporteTecnicoForm() {
                 required
               >
                 <option value="">Seleccione una opción</option>
-                <option value="Hardware">Hardware</option>
-                <option value="Software">Software</option>
-                <option value="Red">Red</option>
-                <option value="Otro">Otro</option>
+                <option value="1">Hardware</option>
+                <option value="2">Software</option>
+                <option value="3">Red</option>
+                <option value="4">Otro</option>
               </select>
             </div>
 
@@ -127,20 +130,14 @@ function SoporteTecnicoForm() {
               >
                 <option value="">Seleccione una sala</option>
                 {salas.map((sala) => (
-                  <option key={sala.id} value={sala.id}>
-                    {sala.nombre}
+                  <option key={sala.idSala} value={sala.idSala}>
+                    {sala.nombreSala}
                   </option>
                 ))}
               </select>
             </div>
 
-            <div className="form-group">
-              <label>Agregar Imágenes</label>
-              <input
-                type="file"
-                onChange={handleImageChange}
-              />
-            </div>
+
 
             <button type="submit" className="submit-button">
               Enviar Ticket

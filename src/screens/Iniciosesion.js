@@ -17,9 +17,8 @@ const Login = () => {
     event.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
 
     const userData = {
-      email,
+      emailUsuario: email,
       password,
-      remember,
     };
 
     try {
@@ -32,9 +31,11 @@ const Login = () => {
       });
 
       const data = await response.json();
-      if (response.ok) {
+
+      // Comprobamos si la respuesta es exitosa
+      if (response.ok && data.message === "Inicio de sesión exitoso") {
         // Redirigir al usuario a la página /home después de un inicio de sesión exitoso
-        navigate('/home'); // Cambiar a la ruta deseada
+        navigate('/UserAdmin'); // Cambiar a la ruta deseada
       } else {
         alert(data.message || 'Ocurrió un error');
       }

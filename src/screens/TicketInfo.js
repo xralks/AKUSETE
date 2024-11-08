@@ -12,10 +12,23 @@ function TicketInfo() {
   useEffect(() => {
     const fetchTicketData = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/api/tickets/${id}`);
+        const response = await fetch('http://localhost:8080/api/tickets/ticketCom');
         if (response.ok) {
           const data = await response.json();
-          setTicketData(data);
+          
+          // Filtrar el ticket que corresponde al ID de la URL
+          const selectedTicket = data.find(ticket => ticket.idTicket === parseInt(id));
+          
+          if (selectedTicket) {
+            setTicketData(selectedTicket);
+          } else {
+            setTicketData({
+              title: 'Ticket no encontrado',
+              description: 'No se encontró información para este ticket.',
+              status: 'Desconocido',
+              comments: [],
+            });
+          }
         } else {
           setTicketData({
             title: 'Ticket no encontrado',
@@ -53,22 +66,26 @@ function TicketInfo() {
           ticketData && (
             <>
               <div className="ticket-info">
-                <h1>{ticketData.title}</h1>
-                <p className="ticket-status">Estado: {ticketData.status}</p>
-                <p>Fecha de creación: {ticketData.creationDate || 'N/A'}</p>
-                <p>Sala: {ticketData.room || 'N/A'}</p>
-                <p>Ubicación: {ticketData.location || 'N/A'}</p>
-                <p>Tipo: {ticketData.type || 'N/A'}</p>
-                <p>Severidad: {ticketData.severity || 'N/A'}</p>
+                <h1>{ticketData.descripcionTicket}</h1>
+                <p className="ticket-status">Estado: {ticketData.estadoTicket}</p>
+                <p>Fecha de creación: {ticketData.fechaCreacionTicket || 'N/A'}</p>
+                <p>Sala: {ticketData.nombreSala || 'N/A'}</p>
+                <p>Ubicación: {ticketData.ubicacionSala || 'N/A'}</p>
+                <p>Tipo: {ticketData.nombreTipoProblema || 'N/A'}</p>
+                <p>Severidad: {ticketData.gravedadTicket || 'N/A'}</p>
+                <p>Usuario: {ticketData.nombreUsuario || 'N/A'}</p>
+                <p>Administrador: {ticketData.nombreAdministrador || 'N/A'}</p>
               </div>
 
               <div className="description-section">
                 <h2>Descripción</h2>
-                <p>{ticketData.description}</p>
+                <p>{ticketData.descripcionTicket}</p>
               </div>
 
+              {/* Aquí podrías agregar la sección de comentarios si los tienes */}
               <div className="comments-section">
                 <h2>Comentarios</h2>
+                {/* Ejemplo de cómo podrías gestionar los comentarios */}
                 {ticketData.comments && ticketData.comments.length > 0 ? (
                   ticketData.comments.map((comment, index) => (
                     <div key={index} className="comment">
@@ -78,7 +95,7 @@ function TicketInfo() {
                     </div>
                   ))
                 ) : (
-                  <p>No hay comentarios. causa</p>
+                  <p>No hay comentarios.</p>
                 )}
               </div>
             </>

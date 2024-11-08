@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Menu from '../componentes/Menu';
 import Boton from '../componentes/Boton';
@@ -13,6 +13,27 @@ import '../App.css';
 const Home = () => {
   const navigate = useNavigate();
 
+  const [tickets, setTickets] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // Función para obtener los tickets desde la API
+  const fetchTickets = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/api/tickets/details');
+      const data = await response.json();
+      setTickets(data); // Almacenamos los tickets en el estado
+      setLoading(false); // Terminamos de cargar
+    } catch (error) {
+      console.error('Error fetching tickets:', error);
+      setLoading(false); // Terminamos de cargar incluso si hubo error
+    }
+  };
+
+  // useEffect para cargar los tickets cuando el componente se monta
+  useEffect(() => {
+    fetchTickets();
+  }, []);
+
   const handleTicketClick = (ticketId) => {
     navigate(`/ticket/${ticketId}`);
   };
@@ -20,8 +41,13 @@ const Home = () => {
   const irAInfo = () => {
     navigate('/info');
   };
+  
   const CrearTicket = () => {
     navigate('/Crear Ticket'); 
+  };
+  
+  const irsesion = () => {
+    navigate('/iniciar_sesion');
   };
 
   return (
@@ -42,7 +68,7 @@ const Home = () => {
               Estarás ayudando a mejorar el ambiente estudiantil y entregando seguridad.
             </p>
             <div style={styles.containerBotones}>
-              <Boton texto="Crear Ticket" tipo="azul" onClick={CrearTicket}/>
+              <Boton texto="Crear Ticket" tipo="azul" onClick={irsesion} />
               <Boton texto="Leer Más" tipo="blancoAzul" onClick={irAInfo} />
             </div>
           </div>
@@ -54,18 +80,22 @@ const Home = () => {
       <section style={styles.section}>
         <h1 style={styles.titulo2}>Tickets en evaluación</h1>
         <div style={styles.cardContainer}>
-          {Array.from({ length: 6 }).map((_, index) => (
-            <div
-              key={index}
-              style={styles.card}
-              onClick={() => handleTicketClick(index + 1)}
-            >
-              <h2 style={styles.cardTitle}>Ticket #{index + 1}</h2>
-              <p style={styles.cardDescription}>
-                Descripción del ticket {index + 1}.
-              </p>
-            </div>
-          ))}
+          {loading ? (
+            <p>Cargando tickets...</p> // Muestra un mensaje de carga
+          ) : tickets.length > 0 ? (
+            tickets.map((ticket) => (
+              <div
+                key={ticket.idTicket}
+                style={styles.card}
+                onClick={() => handleTicketClick(ticket.idTicket)}
+              >
+                <h2 style={styles.cardTitle}>Ticket #{ticket.idTicket}</h2>
+                <p style={styles.cardDescription}>{ticket.descripcionTicket}</p>
+              </div>
+            ))
+          ) : (
+            <p>No se encontraron tickets.</p> // Mensaje si no hay tickets
+          )}
         </div>
         <div style={styles.containerBotones}>
           <Boton texto="Ver Más" tipo="blancoAzul" espacio="144px" />

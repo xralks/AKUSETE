@@ -7,7 +7,10 @@ function MenuAdmin() {
 
   const handleLogout = () => {
     // Lógica de cierre de sesión
-    navigate('/login'); // Redirige a la página de login después de cerrar sesión
+    navigate('/'); // Redirige a la página de login después de cerrar sesión
+  };
+  const CrearTicket = () => {
+    navigate('/Crear ticket'); 
   };
 
   return (
@@ -20,30 +23,28 @@ function MenuAdmin() {
 
       <nav className="menu-admin-nav">
         <ul>
+        <li className="menu-admin-item">
+            <Link to="/Crear ticket">Crear Ticket</Link>
+          </li>
           <li className="menu-admin-item">
             <Link to="/UserAdmin">Tickets activos</Link>
           </li>
           <li className="menu-admin-item">
             <Link to="/AdminCategorias">Categorías</Link>
           </li>
-          <li className="menu-admin-item">
-            <Link to="/AdminAvisos">Avisos</Link>
-          </li>
-          <li className="menu-admin-item logout-item" onClick={handleLogout}>
-            Cerrar Sesión
-          </li>
+
         </ul>
       </nav>
 
       {/* Contenedor con la foto, nombre, rol y notificaciones debajo de "Cerrar Sesión" */}
       <div className="menu-admin-profile">
         <div className="profile-info">
-          <p className="profile-role">Administrador</p>
-          <p className="profile-name">Juan Pérez</p>
+          <p className="profile-role">Usuario</p>
+          <p className="profile-name">Benjamin Miranda</p>
         </div>
-        <div className="profile-picture">
-          <img src={logo} className="App-logo" alt="logo" />
-        </div>
+        <li className="menu-admin-item logout-item" onClick={handleLogout}>
+            Cerrar Sesión
+          </li>
       </div>
     </div>
   );

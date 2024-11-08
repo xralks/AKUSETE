@@ -6,6 +6,7 @@ import Franu from '../img/francoU.webp';
 import Frans from '../img/FranS.webp';
 import Tomas from '../img/tomas.webp';
 import Feli from '../img/felipeL.webp';
+import rose from '../img/rose.webp';
 
 // Importa las imágenes de redes sociales
 import LinkedInIcon from '../img/linkedinazul.svg';
@@ -60,6 +61,16 @@ const Team = () => {
       img: Feli, 
       social: { 
         instagram: '', 
+        github: '', 
+        linkedin: '' 
+      }
+    },
+    { 
+      name: 'Samuel Villagran', 
+      role: 'Full-Stack', 
+      img: rose, 
+      social: { 
+        instagram: 'https://www.instagram.com/', 
         github: '', 
         linkedin: '' 
       }
