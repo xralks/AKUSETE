@@ -28,7 +28,7 @@ const Registro = () => {
     };
 
     try {
-      const response = await fetch('http://localhost:8080/api/registro', {
+      const response = await fetch('http://200.112.74.173:8080/api/registro', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

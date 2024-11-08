@@ -19,7 +19,7 @@ const Home = () => {
   // Función para obtener los tickets desde la API
   const fetchTickets = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/tickets/details');
+      const response = await fetch('http://200.112.74.173:8080/api/tickets/details');
       const data = await response.json();
       setTickets(data); // Almacenamos los tickets en el estado
       setLoading(false); // Terminamos de cargar

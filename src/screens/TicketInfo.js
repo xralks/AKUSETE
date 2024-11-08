@@ -12,7 +12,7 @@ function TicketInfo() {
   useEffect(() => {
     const fetchTicketData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/tickets/ticketCom');
+        const response = await fetch('http://200.112.74.173:8080/api/tickets/ticketCom');
         if (response.ok) {
           const data = await response.json();
           

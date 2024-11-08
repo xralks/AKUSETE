@@ -9,7 +9,7 @@ function Categorias() {
   const [cantidades, setCantidades] = useState({});
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/tickets/details')  // Asegúrate de que esta URL sea correcta
+    fetch('200.112.74.173:8080/api/tickets/details')  // Asegúrate de que esta URL sea correcta
       .then((response) => response.json())
       .then((data) => {
         // Crear un objeto para contar las categorías

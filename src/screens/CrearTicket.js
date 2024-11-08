@@ -15,7 +15,7 @@ function SoporteTecnicoForm() {
   useEffect(() => {
     const fetchSalas = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/salas');
+        const response = await fetch('http://200.112.74.173:8080/api/salas');
         
         if (response.ok) {
           const data = await response.json();
@@ -41,7 +41,7 @@ function SoporteTecnicoForm() {
     };
 
     try {
-      const response = await fetch('http://localhost:8080/api/tickets/create', {
+      const response = await fetch('http://200.112.74.173:8080/api/tickets/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
